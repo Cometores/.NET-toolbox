@@ -2,37 +2,36 @@
 
 [//]: # (__________________________________________________________)
 ## 1. Ping Utility
-A simple command-line application that performs continuous ping tests to a specified host, 
+A command-line application that performs continuous ping tests to a specified host, 
 providing real-time feedback and logging results for later analysis.
 
 ### Features:
-- Continuous Pinging: Sends ping requests at a specified interval.
-- Customizable **Timeout**: Set a timeout for each ping request.
+- **Continuous Pinging**: Sends ping request every second.
+- **Customizable Timeout**: Set a timeout for each ping request.
 - **Error Handling**: Graceful handling of ping failures and exceptions.
 - **Logging**: Records ping results to a log file for future reference.
 - **Statistics**: Displays success rates, minimum, maximum, and average roundtrip times.
 
 ### Usage:
 1. Go to the project folder.<br/>
-2. Run the application:
+2. Run the application via CLI (or via the IDE of your choice):
 ```bash
-dotnet run <host> <timeout> <logFilePath>
+dotnet run <host> [<timeout> <logFilePath>]
 ```
 - `host`: IP address or domain to ping.
-- `timeout`: Timeout in milliseconds for each ping request (optional, default: 1000ms).
-- `logFilePath`: Path to the log file (optional, default: ping_log.txt).
+- `timeout`: Timeout in milliseconds for each ping request (**optional**, default: _1000ms_).
+- `logFilePath`: Path to the log file (**optional**, default: _ping_log.txt_).
 
 ### Example:
 Execution without command line arguments.
 
-![Ping](../../others/readmePics/Ping.gif)
+![Ping](../../docs/images/Ping.gif)
 <br><br>
 
 
 [//]: # (__________________________________________________________)
 ## 2. Port Scanner
-Utility that scans devices in **local network** for open, closed, or error-prone 
-**ports** within a given range.
+Scans devices in **local network** for open, closed, or error-prone **ports** within a given range.
 
 The program displays results in a clear, **tabular format**, 
 allowing users to quickly identify active services on networked devices. 
@@ -47,12 +46,12 @@ displaying manufacturer details to enhance device recognition.
 - **Detailed Report**: Outputs port status in ranges for easier readability.
 
 ### Usage:
-1. Run the program, and select a device from your local network.
+1. Run the program and select a device from your local network.
 2. Specify the start and end ports to scan.
 <p>The program will display real-time progress and present a summary report.</p>
 
 ### Example:
-![PortScanner](../../others/readmePics/PortScanner.gif)
+![PortScanner](../../docs/images/PortScanner.gif)
 
 #### Dependencies:
 - **ShellProgressBar**: NuGet package for enhanced console progress bar.

@@ -20,7 +20,7 @@ public static class Program
 
         // Waiting for download
         Task.WaitAll(fileTasks);
-        Thread.Sleep(1500);
+        Task.Delay(1000).Wait();
         ConsoleMT.WriteLine("Download finished");
     }
 
@@ -32,7 +32,7 @@ public static class Program
     /// <param name="fileN">The index of the file being downloaded.</param>
     private static void SimulateFileDownload(Random random, StatusBar statusBar, int fileN)
     {
-        Thread.Sleep(random.Next(500, 6000));
+        Task.Delay(random.Next(500, 6000)).Wait();
 
         statusBar.Add();
         ConsoleMT.WriteLine($"File {fileN + 1} was installed");

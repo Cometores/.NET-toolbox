@@ -5,18 +5,16 @@
 /// </summary>
 public class StatusBar
 {
-    public CancellationToken CancellationToken;
-
-    private ConsoleColor Color { get; }
+    private static readonly string[] WheelSymbols = { "―", "\\", "|", "/" };
+    private readonly ConsoleColor _color;
     private readonly int _consoleTopPos;
     
-    private static readonly string[] WheelSymbols = { "―", "\\", "|", "/" };
-
+    private readonly object _lockCounting = new();
+    private readonly CancellationTokenSource _cancellationTokenSource;
+    private readonly CancellationToken _cancellationToken;
+    
     private readonly int _tasksAmount;
     private int _tasksFinished;
-
-    private readonly object _lockCounting = new();
-    private CancellationTokenSource _cancellationTokenSource;
 
     /// <summary>
     /// Creates status bar
@@ -27,7 +25,7 @@ public class StatusBar
     {
         _tasksFinished = 0;
         _tasksAmount = tasksAmount;
-        Color = color;
+        _color = color;
         _consoleTopPos = Console.CursorTop;
         
         // Initial status bar
@@ -35,8 +33,9 @@ public class StatusBar
         
         // Start loading wheel
         _cancellationTokenSource = new CancellationTokenSource();
-        CancellationToken = _cancellationTokenSource.Token;
-        Task.Factory.StartNew(DrawLoadingWheel, CancellationToken);
+        _cancellationToken = _cancellationTokenSource.Token;
+        
+        Task.Factory.StartNew(DrawLoadingWheel, _cancellationToken);
     }
 
     /// <summary>
@@ -59,20 +58,26 @@ public class StatusBar
     
     private void PrintBar(int leftPosition)
     {
-        ConsoleMT.WriteAtPos("_", leftPosition, _consoleTopPos, Color);
+        ConsoleMT.WriteAtPos("_", leftPosition, _consoleTopPos, _color);
     }
     
     private void DrawLoadingWheel()
     {
         int i = 0;
-        while (!CancellationToken.IsCancellationRequested)
+        
+        try
         {
-            ConsoleMT.WriteAtPos(WheelSymbols[i], _tasksAmount + 2, _consoleTopPos);
+            while (!_cancellationToken.IsCancellationRequested)
+            {
+                ConsoleMT.WriteAtPos(WheelSymbols[i], _tasksAmount + 2, _consoleTopPos);
             
-            Task.Delay(200).Wait();
-            i = (i + 1) % WheelSymbols.Length;
+                Task.Delay(200, _cancellationToken).Wait(_cancellationToken);
+                i = (i + 1) % WheelSymbols.Length;
+            }
         }
-
-        ConsoleMT.WriteAtPos(" ", _tasksAmount + 2, _consoleTopPos);
+        catch (OperationCanceledException)
+        {
+            ConsoleMT.WriteAtPos(" ", _tasksAmount + 2, _consoleTopPos);
+        }
     }
 }

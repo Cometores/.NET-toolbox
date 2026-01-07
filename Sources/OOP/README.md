@@ -35,7 +35,7 @@ The program will greet the user with 4 functions.
 3) Output the average weight of all gears
 4) Exit program
 
-![StateMachine](../../others/readmePics/StateMachine.png)
+![StateMachine](../../docs/images/StateMachine.png)
 
 #### Technologies:
 - Console application

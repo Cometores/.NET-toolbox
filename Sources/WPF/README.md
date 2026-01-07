@@ -3,7 +3,7 @@
 [//]: # (__________________________________________________________)
 ### 6.1. Customer App
 
-![CustomersApp](../../others/readmePics/CustomersApp.png)
+![CustomersApp](../../docs/images/CustomersApp.png)
 
 
 [//]: # (__________________________________________________________)

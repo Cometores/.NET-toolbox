@@ -12,7 +12,7 @@ For this, a main thread will track progress and draw status bar in the console:
 
 7 files to be loaded, 3 already loaded: `[+++----]`
 
-![FileDownload](../../others/readmePics/FileDownload.gif)
+![FileDownload](../../docs/images/FileDownload.gif)
 
 ### Technologies:
 - Console application
@@ -37,7 +37,7 @@ for the same strings in files located in that folder and subfolders.
 - Program starts with only one thread - with one folder thread for the folders
   passed in parameters.
 
-![Grep](../../others/readmePics/Grep.png)
+![Grep](../../docs/images/Grep.png)
 
 ### Technologies:
 - Console application

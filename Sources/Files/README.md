@@ -1,7 +1,7 @@
 # File System Operations
 
 [//]: # (__________________________________________________________)
-## 1. Directory Analyzer
+## Directory Analyzer
 Simple utility for **analyzing the contents of a directory**. 
 The program provides information about files in a specified directory, including their 
 **extensions**, **sizes**, and **disk space distribution**.

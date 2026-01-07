@@ -5,26 +5,19 @@ namespace PortScanner.PortScan;
 using DeviceInfo = (string Ip, string Mac, string Manufacturer);
 
 /// <summary>
-/// Represents a class for obtaining information about network devices within the same subnet by using ARP commands
+/// Represents a class for collecting information about network devices within the same subnet by using ARP commands
 /// and a service to retrieve manufacturer information based on MAC addresses.
 /// </summary>
 public class NetworkDeviceManager
 {
-    private readonly ManufacturerService _manufacturerService;
-    private readonly Process _process;
     private readonly List<DeviceInfo> _devices = [];
-
-    public NetworkDeviceManager()
+    private readonly ManufacturerService _manufacturerService = new();
+    private readonly ProcessStartInfo _arpStartInfo = new("arp", "-a")
     {
-        _manufacturerService = new ManufacturerService();
-
-        _process = new Process();
-        _process.StartInfo.FileName = "arp";
-        _process.StartInfo.Arguments = "-a";
-        _process.StartInfo.RedirectStandardOutput = true;
-        _process.StartInfo.UseShellExecute = false;
-        _process.StartInfo.CreateNoWindow = true;
-    }
+        RedirectStandardOutput = true,
+        UseShellExecute = false,
+        CreateNoWindow = true
+    };
 
     /// <summary>
     /// Retrieves information about network devices within the same subnet by using ARP commands
@@ -55,9 +48,13 @@ public class NetworkDeviceManager
 
     private string GetArpOutput()
     {
-        _process.Start();
-        string output = _process.StandardOutput.ReadToEnd();
-        _process.WaitForExit();
+        using var process = Process.Start(_arpStartInfo);
+        
+        if (process == null)
+            return string.Empty;
+
+        string output = process.StandardOutput.ReadToEnd();
+        process.WaitForExit();
 
         return output;
     }

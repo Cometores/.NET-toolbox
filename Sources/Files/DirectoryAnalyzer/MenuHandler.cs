@@ -58,14 +58,14 @@ internal class MenuHandler(Analyzer.DirectoryAnalyzer analyzer)
                 DisplayDiskUsageReport();
                 break;
             case 4:
-                Console.WriteLine("Returning to directory selection...");
+                Console.WriteLine("\nReturning to directory selection...");
                 return true;
             case 5:
-                Console.WriteLine("Exiting...");
+                Console.WriteLine("\nExiting...");
                 Environment.Exit(0);
                 break;
             default:
-                Console.WriteLine("Invalid choice. Please try again.");
+                Console.WriteLine("\nInvalid choice. Please try again.");
                 break;
         }
 

@@ -3,7 +3,7 @@
 ### 1. Picture Viewer
 [Microsoft Tutorial](https://learn.microsoft.com/en-gb/visualstudio/get-started/csharp/tutorial-windows-forms-picture-viewer-layout?view=vs-2022)
 
-![PictureViewer](../../others/readmePics/PictureViewer.png)
+![PictureViewer](../../docs/images/PictureViewer.png)
 
 #### The implementation is in the next project:
 - GUI - [PictureViewer](PictureViewer)
@@ -13,7 +13,7 @@
 ### 2. Timed math quiz
 [Microsoft Tutorial](https://learn.microsoft.com/en-gb/visualstudio/get-started/csharp/tutorial-windows-forms-math-quiz-create-project-add-controls?view=vs-2022)
 
-![MathQuiz](../../others/readmePics/MathQuiz.png)
+![MathQuiz](../../docs/images/MathQuiz.png)
 
 #### The implementation is in the next project:
 - GUI - [MathQuiz](MathQuiz)
@@ -23,7 +23,7 @@
 ### 3. Matching game
 [Microsoft Tutorial](https://learn.microsoft.com/en-gb/visualstudio/get-started/csharp/tutorial-windows-forms-create-match-game?view=vs-2022)
 
-![MatchingGame](../../others/readmePics/MatchingGame.png)
+![MatchingGame](../../docs/images/MatchingGame.png)
 
 #### Task:
 Matching game, where the player matches pairs of hidden icons.
@@ -51,7 +51,7 @@ First you need to check if the file is really a valid MP3 file.
 For this, Tag must be equal to "TAG".
 When the file is read, the text fields display information, they can be edited and saved with another button.
 
-![MP3GUI](../../others/readmePics/MP3GUI.png)
+![MP3GUI](../../docs/images/MP3GUI.png)
 
 #### Technologies:
 - Windows Forms
@@ -76,7 +76,7 @@ of German words.
 
 A [list](https://gist.github.com/MarvinJWendt/2f4f4154b8ae218600eb091a5706b5f4#file-wordlist-german-txt)
 of all meaningful German words is needed.
-![MP3GUI](../../others/readmePics/AnagramGenerator.png)
+![MP3GUI](../../docs/images/AnagramGenerator.png)
 
 #### Technologies:
 - Windows Forms
